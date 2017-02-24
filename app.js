@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 
 var app = express();
 //https://www.npmjs.com/package/mongoose
-mongoose.connect('mongodb://finance:Fin12#@ds027155.mongolab.com:27155/financez');
+//mongoose.connect('mongodb://finance:Fin12#@ds027155.mongolab.com:27155/financez');
+mongoose.connect('mongodb://angular:ang123@ds161099.mlab.com:61099/ang1crud');
 //http://mongoosejs.com/docs/models.html
 var schema = new mongoose.Schema({ name: 'string', money: 'number', account: 'string', type: 'string', date: 'string' });
 var accountz = mongoose.model('accountz', schema);
@@ -94,9 +95,9 @@ app.post('/editor', function (req, res) {
     });
 });
 
-var server = app.listen(8888, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+var server = app.listen(process.env.PORT, function () {
+    var host = process.env.IP;
+    var port = process.env.PORT;
 
     console.log('Example app listening at http://%s:%s', host, port);
 });
